@@ -1,7 +1,10 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#101a32">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101a32">
+  <meta name="description" content="Northstar Academy CBSE school management system">
   <title>Northstar Academy | School OS</title>
   <link rel="stylesheet" href="styles.css">
 </head>
@@ -9,43 +12,62 @@
   <div id="setupNotice" class="setup-notice" hidden></div>
   <section id="authView" class="auth-shell" hidden>
     <div class="auth-card">
-      <div class="brand-mark">N</div><p class="eyebrow">NORTHSTAR · CBSE SCHOOL OS</p>
-      <h1 id="authTitle">Welcome back</h1><p class="muted">Sign in to securely manage your school.</p>
+      <div class="brand-mark">N</div>
+      <p class="eyebrow">NORTHSTAR · CBSE SCHOOL OS</p>
+      <h1 id="authTitle">Welcome back</h1>
+      <p class="muted">Sign in to securely manage your school.</p>
       <form id="authForm">
         <label>Email<input name="email" type="email" autocomplete="email" required></label>
         <label>Password<input name="password" type="password" autocomplete="current-password" minlength="8" required></label>
         <label id="schoolNameField" hidden>School name<input name="schoolName" autocomplete="organization"></label>
-        <button class="button primary full" id="authSubmit">Sign in</button>
+        <button class="button primary full" id="authSubmit" type="submit">Sign in</button>
       </form>
       <p class="auth-switch"><span id="authSwitchText">New to Northstar?</span> <button id="authSwitch" class="text-button" type="button">Create account</button></p>
       <p id="authMessage" class="message" role="status"></p>
     </div>
   </section>
+
   <div class="layout" id="appView" hidden>
     <aside class="sidebar" id="sidebar">
       <div class="brand"><div class="brand-mark">N</div><div><strong>Northstar</strong><small>School OS · CBSE</small></div></div>
       <p class="nav-title">WORKSPACE</p>
-      <nav id="navigation">
-        <button class="nav-button active" data-section="dashboard">⌂ <span>Dashboard</span></button>
-        <button class="nav-button" data-section="students">♧ <span>Students</span></button>
-        <button class="nav-button" data-section="attendance">▣ <span>Attendance</span></button>
-        <button class="nav-button" data-section="exams">▤ <span>Academics & Exams</span></button>
-        <button class="nav-button" data-section="fees">₹ <span>Fees</span></button>
-        <button class="nav-button" data-section="hostel">⌂ <span>Hostel</span></button>
-        <button class="nav-button" data-section="staff">♙ <span>Staff</span></button>
-        <button class="nav-button" data-section="notices">◉ <span>Notice Board</span></button>
+      <nav id="navigation" aria-label="Main navigation">
+        <button class="nav-button active" data-section="dashboard"><span aria-hidden="true">⌂</span><span>Dashboard</span></button>
+        <button class="nav-button" data-section="students"><span aria-hidden="true">♧</span><span>Students</span></button>
+        <button class="nav-button" data-section="attendance"><span aria-hidden="true">▣</span><span>Attendance</span></button>
+        <button class="nav-button" data-section="exams"><span aria-hidden="true">▤</span><span>Academics & Exams</span></button>
+        <button class="nav-button" data-section="fees"><span aria-hidden="true">₹</span><span>Fees</span></button>
+        <button class="nav-button" data-section="hostel"><span aria-hidden="true">⌂</span><span>Hostel</span></button>
+        <button class="nav-button" data-section="staff"><span aria-hidden="true">♙</span><span>Staff</span></button>
+        <button class="nav-button" data-section="notices"><span aria-hidden="true">◉</span><span>Notice Board</span></button>
       </nav>
-      <div class="sidebar-bottom"><div class="school-label" id="schoolLabel">Your school</div><button id="signOut" class="nav-button">↪ <span>Sign out</span></button></div>
+      <div class="sidebar-bottom"><div class="school-label" id="schoolLabel">Your school</div><button id="signOut" class="nav-button" type="button"><span aria-hidden="true">↪</span><span>Sign out</span></button></div>
     </aside>
+
     <main class="main">
-      <header class="topbar"><div class="title-wrap"><button id="menuToggle" class="button menu-toggle" aria-label="Toggle navigation">☰</button><div><p class="eyebrow" id="breadcrumb">Northstar / Overview</p><h1 id="pageTitle">School dashboard</h1></div></div><div class="top-actions"><span class="secure-label">● Secure cloud data</span><button class="button secondary" id="exportData">Export CSV</button></div></header>
+      <header class="topbar">
+        <div class="title-wrap"><button id="menuToggle" class="button menu-toggle" type="button" aria-label="Toggle navigation">☰</button><div><p class="eyebrow" id="breadcrumb">Northstar / Overview</p><h1 id="pageTitle">School dashboard</h1></div></div>
+        <div class="top-actions"><span class="secure-label">● Secure cloud data</span><button class="button secondary" id="exportData" type="button">Export CSV</button></div>
+      </header>
       <div id="appMessage" class="message" role="status"></div>
-      <section class="page active" id="page-dashboard"><div class="hero"><div><p class="eyebrow">SCHOOL MANAGEMENT, SIMPLIFIED</p><h2>Everything your school needs,<br>in one place.</h2><p>Live records sync securely with your school's cloud database.</p><button class="button light" data-open="students">＋ Add a student</button></div><div class="hero-symbol">✦</div></div><div class="stats" id="dashboardStats"></div><div class="panel"><div class="panel-heading"><div><h2>Latest students</h2><p>Recently added to your school</p></div><button class="text-button" data-section-link="students">View students →</button></div><div class="table-scroll"><table><thead><tr><th>Student</th><th>Admission no.</th><th>Class</th><th>Guardian</th><th>Status</th></tr></thead><tbody id="recentRows"></tbody></table></div></div></section>
-      <section class="page" id="page-records"><div class="section-heading"><div><h2 id="sectionTitle"></h2><p id="sectionDescription"></p></div><div class="section-actions"><input id="searchInput" class="search" placeholder="Search records…"><button id="addRecord" class="button primary">＋ Add record</button></div></div><div id="sectionStats" class="stats"></div><div class="panel"><div class="table-scroll"><table><thead id="tableHead"></thead><tbody id="tableRows"></tbody></table></div></div></section>
+
+      <section class="page active" id="page-dashboard">
+        <div class="hero"><div><p class="eyebrow">SCHOOL MANAGEMENT, SIMPLIFIED</p><h2>Everything your school needs,<br>in one place.</h2><p>Manage attendance, fees, hostels and school records.</p><button class="button light" data-open="students" type="button">＋ Add a student</button></div><div class="hero-symbol" aria-hidden="true">✦</div></div>
+        <div class="stats" id="dashboardStats"></div>
+        <div class="panel"><div class="panel-heading"><div><h2>Latest students</h2><p>Recently added to your school</p></div><button class="text-button" data-section-link="students" type="button">View students →</button></div><div class="table-scroll"><table><thead><tr><th>Student</th><th>Admission no.</th><th>Class</th><th>Guardian</th><th>Status</th></tr></thead><tbody id="recentRows"><tr><td colspan="5" class="empty">Loading school records…</td></tr></tbody></table></div></div>
+      </section>
+
+      <section class="page" id="page-records">
+        <div class="section-heading"><div><h2 id="sectionTitle">Records</h2><p id="sectionDescription"></p></div><div class="section-actions"><input id="searchInput" class="search" type="search" placeholder="Search records…" aria-label="Search records"><button id="addRecord" class="button primary" type="button">＋ Add record</button></div></div>
+        <div id="sectionStats" class="stats"></div>
+        <div class="panel"><div class="table-scroll"><table><thead id="tableHead"></thead><tbody id="tableRows"><tr><td class="empty">Select a section to load records.</td></tr></tbody></table></div></div>
+      </section>
     </main>
   </div>
-  <div class="modal-backdrop" id="modalBackdrop" hidden><section class="modal" role="dialog" aria-modal="true"><div class="panel-heading"><div><p class="eyebrow">SCHOOL RECORD</p><h2 id="modalTitle">Add record</h2></div><button class="icon-button" id="closeModal" aria-label="Close">×</button></div><form id="recordForm"><div class="form-grid" id="formFields"></div><div class="modal-actions"><button type="button" class="button secondary" id="cancelModal">Cancel</button><button type="submit" class="button primary">Save record</button></div></form></section></div>
-  <div id="toast" class="toast" role="status"></div>
+
+  <div class="modal-backdrop" id="modalBackdrop" hidden><section class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle"><div class="panel-heading"><div><p class="eyebrow">SCHOOL RECORD</p><h2 id="modalTitle">Add record</h2></div><button class="icon-button" id="closeModal" type="button" aria-label="Close">×</button></div><form id="recordForm"><div class="form-grid" id="formFields"></div><div class="modal-actions"><button type="button" class="button secondary" id="cancelModal">Cancel</button><button type="submit" class="button primary">Save record</button></div></form></section></div>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <noscript><p class="setup-notice">Please enable JavaScript to use the school management app.</p></noscript>
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="supabase-config.js"></script>
   <script src="app.js"></script>
