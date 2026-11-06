@@ -1,0 +1,4 @@
+# Vercel / GitHub Pages static deployment. Supabase is the hosted backend.
+{
+  "cleanUrls": true
+}
